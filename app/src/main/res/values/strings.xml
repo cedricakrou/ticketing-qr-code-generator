@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Qr code Generator</string>
+    <string name="getStartedText">COMMENCER</string>
+</resources>

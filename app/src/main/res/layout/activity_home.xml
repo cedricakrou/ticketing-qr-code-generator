@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp">
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Capacité de l'événement"
+        android:layout_marginTop="40dp"
+        android:theme="@style/header"/>
+
+    <LinearLayout
+        android:id="@+id/ll_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:paddingBottom="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/edt_inf"
+                    style="@style/formDesign"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ticket inférieur"
+                    android:inputType="number"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/edt_sup"
+                    style="@style/formDesign"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ticket supérieur"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30sp"
+            android:background="@drawable/style_bouton_pink"
+            android:text="VALIDER"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <com.agrawalsuneet.dotsloader.loaders.LinearDotsLoader
+        android:id="@+id/loading_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:loader_animDur="500"
+        app:loader_noOfDots="3"
+        app:loader_circleRadius="25dp"
+        app:loader_defaultColor="@color/colorAccent"
+        app:loader_selectedColor="@color/colorPrimaryDark"
+        app:loader_dotsDist="15dp"
+        app:loader_expandOnSelect="false"
+        app:loader_isSingleDir="false"
+        app:loader_selectedRadius="10dp"
+        app:loader_showRunningShadow="true"
+        app:loader_firstShadowColor="@color/tab_indicator_gray"
+        app:loader_secondShadowColor="@color/colorAccent"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>
