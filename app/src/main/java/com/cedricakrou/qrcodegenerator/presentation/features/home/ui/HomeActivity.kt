@@ -48,7 +48,7 @@ class HomeActivity : BaseActivity<
 
             is HomeState.FINISH -> {
                 Utils.hideAndShowView( loading_bar, ll_body)
-                Toast.makeText( this, "Finish", Toast.LENGTH_SHORT ).show()
+                Toast.makeText( this, "Génération des tickets terminée", Toast.LENGTH_SHORT ).show()
             }
 
         }
