@@ -1,10 +1,7 @@
 package com.cedricakrou.qrcodegenerator.presentation.features.home.ui
 
-import android.graphics.Bitmap
-import com.cedricakrou.artisanat.presentation.common.BaseViewModel
-import com.cedricakrou.qrcodegenerator.domain.entities.QrCode
-import com.cedricakrou.qrcodegenerator.presentation.Utils
-import com.fasterxml.jackson.databind.ObjectMapper
+import com.cedricakrou.qrcodegenerator.presentation.common.BaseViewModel
+import com.cedricakrou.qrcodegenerator.presentation.features.async.LikpechAsyncTask
 import javax.inject.Inject
 
 
@@ -38,39 +35,14 @@ class HomeViewModel @Inject constructor(
 
                 is HomeAction.Submit -> {
 
-                    mState.postValue(
-                        HomeState.LOADING
+                    val asyncTask = LikpechAsyncTask(
+                        action.activity,
+                        mState,
+                        action.inf,
+                        action.sup
                     )
 
-                    for ( i in action.inf .. action.sup  ) {
-
-                        // create qr code
-
-                        val  qrCode : Bitmap? = Utils.createQrCode(
-                            context = action.activity.applicationContext,
-                            message = ObjectMapper().writeValueAsString(
-                                QrCode(
-                                    ticketNumber = i.toString(),
-                                    ))
-                                )
-
-                        // save qr code in phone
-
-                        if ( qrCode != null ) {
-
-                            Utils.saveImage(
-                                activity = action.activity,
-                                myBitmap = qrCode,
-                                number = i
-                            )
-
-                        }
-
-                    }
-
-                    mState.postValue(
-                        HomeState.FINISH
-                    )
+                    asyncTask.execute()
 
                 }
 

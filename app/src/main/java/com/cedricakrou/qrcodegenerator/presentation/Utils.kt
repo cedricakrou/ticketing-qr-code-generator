@@ -27,6 +27,11 @@ object Utils {
 
     private const val IMAGE_DIRECTORY = "/qrCodeGenerator/temp/"
 
+    val file : File = File(
+        Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_DOCUMENTS)
+            .toString() + IMAGE_DIRECTORY
+    )
+
     fun hideAndShowView( hide : View, show : View ) {
         hide.visibility = View.GONE
         show.visibility = View.VISIBLE
@@ -57,6 +62,27 @@ object Utils {
         return bitmapQrCode
     }
 
+    fun verifyFile ( file: File ) {
+
+        val wallpaperDirectory = file
+
+        // have the object build the directory structure, if needed.
+        if (wallpaperDirectory.exists()) {
+
+            val listFiles = wallpaperDirectory.listFiles()
+
+            for (f in listFiles) {
+                f.delete()
+            }
+
+        }
+        else {
+            wallpaperDirectory.mkdirs()
+        }
+
+
+    }
+
     fun saveImage(activity: Activity, myBitmap: Bitmap, number : Long): Boolean {
 
         if (ContextCompat.checkSelfPermission(
@@ -66,18 +92,11 @@ object Utils {
         ) {
             val bytes = ByteArrayOutputStream()
             myBitmap.compress(Bitmap.CompressFormat.JPEG, 90, bytes)
-            val wallpaperDirectory = File(
-                Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_DOCUMENTS)
-                    .toString() + IMAGE_DIRECTORY
-            )
-            // have the object build the directory structure, if needed.
-            if (!wallpaperDirectory.exists()) {
-                Log.d("dirrrrrr", "" + wallpaperDirectory.mkdirs())
-                wallpaperDirectory.mkdirs()
-            }
+            val wallpaperDirectory = file
+
             try {
                 val f = File(
-                    wallpaperDirectory, number.toString() + ".jpg"
+                    wallpaperDirectory, "Qr_code_$number.jpg"
                 )
                 f.createNewFile() //give read write permission
                 val fo = FileOutputStream(f)
@@ -89,12 +108,10 @@ object Utils {
                     null
                 )
                 fo.close()
-                Log.d("TAG", "File Saved::--->" + f.absolutePath)
-                Toast.makeText(activity, "Sauvegarde effectuée", Toast.LENGTH_SHORT)
                 return true
             } catch (e1: IOException) {
                 e1.printStackTrace()
-                Toast.makeText(activity, "Sauvegarde echouée", Toast.LENGTH_SHORT)
+//                Toast.makeText(activity, "Sauvegarde echouée", Toast.LENGTH_SHORT)
             }
         } else {
             ActivityCompat.requestPermissions(

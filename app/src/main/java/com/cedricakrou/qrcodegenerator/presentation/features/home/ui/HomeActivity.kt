@@ -1,5 +1,6 @@
 package com.cedricakrou.qrcodegenerator.presentation.features.home.ui
 
+import android.view.View
 import android.widget.Toast
 import com.cedricakrou.qrcodegenerator.presentation.common.BaseActivity
 import com.cedricakrou.qrcodegenerator.R
@@ -27,6 +28,14 @@ class HomeActivity : BaseActivity<
 
         btn_submit.setOnClickListener {
 
+//            Utils.hideAndShowView( ll_body, loading_bar )
+
+            ll_body.visibility = View.GONE
+            loading_bar.visibility = View.VISIBLE
+
+            Toast.makeText( this, "Génération des qr codes", Toast.LENGTH_SHORT ).show()
+
+
             dispatchIntent(
                 HomeIntent.Submit(
                     activity = this,
@@ -43,17 +52,17 @@ class HomeActivity : BaseActivity<
 
         when( state ) {
             is HomeState.LOADING -> {
-                Utils.hideAndShowView(ll_body, loading_bar)
-            }
+                Utils.hideAndShowView( ll_body, loading_bar )
+                Toast.makeText( this, "Génération des qr codes", Toast.LENGTH_SHORT ).show()
 
+            }
             is HomeState.FINISH -> {
                 Utils.hideAndShowView( loading_bar, ll_body)
-                Toast.makeText( this, "Génération des tickets terminée", Toast.LENGTH_SHORT ).show()
+                Toast.makeText( this, "Génération des qr code terminée", Toast.LENGTH_SHORT ).show()
             }
 
         }
 
     }
-
 
 }

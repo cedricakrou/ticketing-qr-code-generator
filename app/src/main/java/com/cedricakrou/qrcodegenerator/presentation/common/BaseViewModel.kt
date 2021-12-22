@@ -1,9 +1,13 @@
-package com.cedricakrou.artisanat.presentation.common
+package com.cedricakrou.qrcodegenerator.presentation.common
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.cedricakrou.artisanat.presentation.common.IViewAction
+import com.cedricakrou.artisanat.presentation.common.IViewIntent
+import com.cedricakrou.artisanat.presentation.common.IViewModel
+import com.cedricakrou.artisanat.presentation.common.IViewState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

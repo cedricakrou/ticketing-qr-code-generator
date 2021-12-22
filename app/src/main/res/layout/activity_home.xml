@@ -38,8 +38,10 @@
                     style="@style/formDesign"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Ticket inférieur"
+                    android:hint="Nombre de ticket inférieur"
                     android:inputType="number"
+                    android:text="1"
+                    android:enabled="true"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -55,8 +57,10 @@
                     style="@style/formDesign"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Ticket supérieur"
-                    android:inputType="number" />
+                    android:hint="Nombre de ticket supérieur"
+                    android:inputType="number"
+                    android:text="10"
+                    />
 
             </com.google.android.material.textfield.TextInputLayout>
 

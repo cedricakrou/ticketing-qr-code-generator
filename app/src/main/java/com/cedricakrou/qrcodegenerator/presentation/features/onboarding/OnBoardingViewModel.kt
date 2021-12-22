@@ -1,7 +1,7 @@
 package com.cedricakrou.qrcodegenerator.presentation.features.onboarding
 
 import android.content.SharedPreferences
-import com.cedricakrou.artisanat.presentation.common.BaseViewModel
+import com.cedricakrou.qrcodegenerator.presentation.common.BaseViewModel
 import com.cedricakrou.qrcodegenerator.presentation.features.common.SharedPrefVar
 import javax.inject.Inject
 
@@ -20,7 +20,7 @@ class OnBoardingViewModel @Inject constructor(
             when( action) {
                 is OnboardingAction.FirstConnection -> {
 
-                    editor.putBoolean( SharedPrefVar.firstConnection, true )
+                    editor.putBoolean( SharedPrefVar.firstConnection, false )
                     editor.apply()
 
                     mState.postValue(

@@ -1,11 +1,8 @@
 package com.cedricakrou.qrcodegenerator.presentation.features.splash
 
 import android.content.SharedPreferences
-import com.cedricakrou.artisanat.presentation.common.BaseViewModel
+import com.cedricakrou.qrcodegenerator.presentation.common.BaseViewModel
 import com.cedricakrou.qrcodegenerator.presentation.features.common.SharedPrefVar
-import com.cedricakrou.qrcodegenerator.presentation.features.splash.SplashAction
-import com.cedricakrou.qrcodegenerator.presentation.features.splash.SplashIntent
-import com.cedricakrou.qrcodegenerator.presentation.features.splash.SplashState
 import javax.inject.Inject
 
 class SplashViewModel @Inject constructor(
@@ -33,7 +30,7 @@ class SplashViewModel @Inject constructor(
 
                         val firstConnection : Boolean = sharedPreferences.getBoolean( SharedPrefVar.firstConnection, false )
 
-                        if ( firstConnection ) SplashState.SignUp else SplashState.FirstConnection
+                        if ( firstConnection ) SplashState.FirstConnection else  SplashState.SignUp
 
                     }
                 }

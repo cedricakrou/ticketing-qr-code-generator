@@ -33,16 +33,16 @@ class OnboardingActivity : BaseActivity<
 
         mList.add(
             ScreenItem(
-                "Bienvenue à ARTSIAN'",
-                "Nous vous mettons en relatio,n avec les meilleurs prestataires de services.",
+                "Bienvenue à Qr Code Generator'",
+                "Générer au les Qr Code à poser sur vos tickets.",
                 R.drawable.onboarding_img1
             )
         )
 
         mList.add(
             ScreenItem(
-                "SERVICES",
-                "Soumettez vos offres et nous vous proposons avec l'artisan ayant le meilleur profil",
+                "EVENEMENT",
+                "Entrez la capacité minimale et la capacité maximale de votre événement puis nous générons vos tickets",
                 R.drawable.onboarding_img2
             )
         )
