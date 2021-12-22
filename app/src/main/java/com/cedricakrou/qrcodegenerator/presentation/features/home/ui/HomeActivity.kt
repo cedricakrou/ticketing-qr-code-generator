@@ -1,7 +1,12 @@
 package com.cedricakrou.qrcodegenerator.presentation.features.home.ui
 
+import android.Manifest
+import android.app.Activity
+import android.content.pm.PackageManager
 import android.view.View
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.cedricakrou.qrcodegenerator.presentation.common.BaseActivity
 import com.cedricakrou.qrcodegenerator.R
 import com.cedricakrou.qrcodegenerator.presentation.Utils
@@ -21,6 +26,20 @@ class HomeActivity : BaseActivity<
     }
 
     override fun initDATA() {
+
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                0
+            )
+
+        }
 
     }
 
@@ -65,4 +84,27 @@ class HomeActivity : BaseActivity<
 
     }
 
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+
+        when( requestCode ) {
+            Activity.RESULT_CANCELED -> {
+
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    0
+                )
+
+            }
+
+        }
+
+    }
 }
